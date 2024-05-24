@@ -16,10 +16,10 @@ def load_artifacts():
     global __model
 
     try:
-        with open("../ml_model/postal.json", 'r') as f:
+        with open("../ML_model/postal.json", 'r') as f:
             __pincodes = json.load(f)['data_columns']
 
-        with open("../ml_model/house_price_model.pickle", 'rb') as g:  # Open pickle file in binary mode
+        with open("../ML_model/house_price_model.pickle", 'rb') as g:  # Open pickle file in binary mode
             __model = pickle.load(g)
 
         print("Artifacts loaded successfully.")
