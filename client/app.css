@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin:  5;
+    padding: 5;
+    background-color: #f2f2f2;
+}
+
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #b3a5a58b;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.553);
+}
+
+h2 {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+/* Switch Field Styles */
+.switch-field,
+.switch-field2,
+.floors {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.switch-field input,
+.switch-field2 input,
+.floors input {
+    display: none;
+}
+
+.switch-field label,
+.switch-field2 label,
+.floors label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.switch-field input:checked + label,
+.switch-field2 input:checked + label,
+.floors input:checked + label {
+    background-color: #bac53b;
+    color: #fff;
+}
+
+/* Input Field Styles */
+.livingarea,
+.lotarea,
+.distance {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Location Select Styles */
+
+
+.location {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: center;
+    padding-right: 30px;
+    color: #0b0505;
+}
+
+
+/* Submit Button Styles */
+.submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #3e8e41;
+}
+
+/* Result Styles */
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #c4c4c438;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.img {
+    background: url('https://www.rcfacadelighting.com/wp-content/uploads/2022/07/villa-facade-lighting.jpg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size:100% 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(15px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

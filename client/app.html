@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Bangalore House Price Prediction </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <!-- connected html with js and css -->
+</head>
+
+<body>
+    <div class="img"></div>
+    <form class="form">
+        <h2>Bedroom</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" />
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+            <label for="radio-bhk-5">5</label>
+        </div>
+        <h2>Bath</h2>
+        <div class="switch-field2">
+            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+            <label for="radio-bath-1">1</label>
+            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" />
+            <label for="radio-bath-2">2</label>
+            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+            <label for="radio-bath-3">3</label>
+            <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+            <label for="radio-bath-4">4</label>
+            <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+            <label for="radio-bath-5">5</label>
+        </div>
+        <h2>Living Area</h2>
+            <input class="livingarea" type="text" id="uilivingSqft" class="floatLabel" name="Squareft" >
+        <h2>Lot Area</h2>
+            <input class="lotarea" type="text" id="uilotSqft" class="floatLabel" name="Squareft" >
+        <h2>Floors</h2>
+        <div class="floors">
+            <input type="radio" id="radio-floor-1" name="uifloor" value="1" />
+            <label for="radio-floor-1">1</label>
+            <input type="radio" id="radio-floor-2" name="uifloor" value="2" />
+            <label for="radio-floor-2">2</label>
+            <input type="radio" id="radio-floor-3" name="uifloor" value="3" />
+            <label for="radio-floor-3">3</label>
+        </div>        
+        <h2>Location (Pincode)</h2>
+        <div>
+            <select class="location" name="" id="uiLocations">
+                <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+            </select>
+        </div>
+
+        <h2>Approx Distance from Airport </h2>
+        <input class="distance" type="text" id="uidistance" class="floatLabel" name="Squareft" >
+
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+        <div id="uiEstimatedPrice" class="result">
+            <h2></h2>
+        </div>
+    </form>
+
+</body>
+
+</html>
