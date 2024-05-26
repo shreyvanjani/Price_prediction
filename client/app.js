@@ -41,8 +41,8 @@ function onClickedEstimatePrice() {
   var postal = document.getElementById("uiLocations").value;
   var estPrice = document.getElementById("uiEstimatedPrice");
 
-  var url = "http://127.0.0.1:5000/predict_home_price"; 
-  // var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
+  // var url = "http://127.0.0.1:5000/predict_home_price"; 
+  var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
 
   $.post(
     url,
@@ -65,7 +65,8 @@ function onClickedEstimatePrice() {
 // here we load the pages(fist load the location)
 function onPageLoad() {
   console.log("document loaded");
-  var url = "http://127.0.0.1:5000/get_pincode"; 
+  var url ="/api/get_pincode";
+  // var url = "http://127.0.0.1:5000/get_pincode"; 
   $.get(url, function (data, status) {
     console.log("response for the pincode request ");
     if (data) {
