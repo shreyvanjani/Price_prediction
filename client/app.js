@@ -2,7 +2,7 @@ function getBHKValue() {
   var uiBHK = document.getElementsByName("uiBHK");
   for (var i in uiBHK) {
     if (uiBHK[i].checked) {
-      return parseInt(uiBHK[i].value); 
+      return parseInt(uiBHK[i].value);
     }
   }
   return -1; // Invalid Value
@@ -28,50 +28,56 @@ function getFloorValue() {
   return -1; // Invalid Value
 }
 
-
-
 function onClickedEstimatePrice() {
   console.log("Estimate price button clicked");
   var livingArea = parseInt(document.getElementById("uilivingSqft").value);
   var lotArea = parseInt(document.getElementById("uilotSqft").value);
-  var distanceFromAirport = parseInt(document.getElementById("uidistance").value);
+  var distanceFromAirport = parseInt(
+    document.getElementById("uidistance").value
+  );
   var bhk = getBHKValue();
   var bathrooms = getBathValue();
   var floors = getFloorValue();
   var postal = document.getElementById("uiLocations").value;
-  var estPrice = document.getElementById("uiEstimatedPrice");
+  var bestPrice = document.getElementById("uiEstimatedPrice");
 
   if (isNaN(livingArea) || isNaN(lotArea) || isNaN(distanceFromAirport)) {
-    alert("Please enter valid numeric values for living area, lot area, and distance from airport.");
+    alert(
+      "Please enter valid numeric values for living area, lot area, and distance from airport."
+    );
     return;
   }
-  
-  if (livingArea < 400 || lotArea <600 ){
+
+  if (livingArea < 400 || lotArea < 600) {
     alert("minimu value for living area is 400 and lot area is 600");
     return;
   }
-  if (livingArea < 400 || lotArea <600 || livingArea > lotArea){
+  if (livingArea < 400 || lotArea < 600 || livingArea > lotArea) {
     alert("Living Area should be less than Lot Area");
     return;
   }
 
-
   // var url = "/api/predict_home_price";
-  var url = "http://127.0.0.1:5000/predict_home_price"; 
+  var url = "http://127.0.0.1:5000/predict_home_price";
 
-  $.post(url, {
-    bhk: bhk,
-    bathrooms: bathrooms,
-    living_area: livingArea,
-    lot_area: lotArea,
-    floors: floors,
-    postal_code: postal,
-    distance_from_airport: distanceFromAirport,
-  }, function (data, status) {
-    console.log(data.estimated_price);
-    estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Rupees</h2>";
-    console.log(status);
-  });
+  $.post(
+    url,
+    {
+      bhk: bhk,
+      bathrooms: bathrooms,
+      living_area: livingArea,
+      lot_area: lotArea,
+      floors: floors,
+      postal_code: postal,
+      distance_from_airport: distanceFromAirport,
+    },
+    function (data, status) {
+      console.log(data.estimated_price);
+      bestPrice.innerHTML =
+        "<h2>" + data.estimated_price.toString() + " Rupees</h2>";
+      console.log(status);
+    }
+  );
 }
 
 function onPageLoad() {
@@ -85,7 +91,7 @@ function onPageLoad() {
       var locations = data.pincodes;
       var uiLocations = document.getElementById("uiLocations");
       $("#uiLocations").empty();
-      locations.forEach(location => {
+      locations.forEach((location) => {
         var opt = new Option(location);
         $("#uiLocations").append(opt);
       });
@@ -142,5 +148,66 @@ async function initMap() {
     });
   });
 }
+
+
+// async function initMap() {
+//   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+//   const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+//     "marker"
+//   );
+
+//   var postal = document.getElementById("uiLocations").value;
+//   var url = "http://127.0.0.1:5000/fetch-pincode-data?pincode="+ postal;
+  
+//   $.get(url,function(data, status){
+//       console.log(data);
+//       if (data.coordinates && Array.isArray(data.coordinates)) {
+//         const map = new Map(document.getElementById("map"), {
+//           center: { lat: data.coordinates[0].latitude, lng: data.coordinates[0].longitude },
+//           zoom: 9,
+//           mapId: "4504f8b3736",
+//         });
+
+//         const markers = data.coordinates.map((coord, i) => ({
+//           position: { lat: coord.latitude, lng: coord.longitude },
+//           title: `Location ${i + 1}`,
+//         }));
+
+//         const infoWindow = new InfoWindow();
+
+//         markers.forEach(({ position, title }, i) => {
+//           const pin = new PinElement({
+//             glyph: `${i + 1}`,
+//             scale: 1.5,
+//           });
+//           const m = new AdvancedMarkerElement({
+//             position,
+//             map,
+//             title: `${i + 1}. ${title}`,
+//             content: pin.element,
+//             gmpClickable: true,
+//             gmpDraggable: true,
+//           });
+
+//           m.addListener("click", () => {
+//             infoWindow.close();
+//             infoWindow.setContent(m.title);
+//             infoWindow.open(m.map, m);
+//           });
+
+//           m.addListener("dragend", () => {
+//             const position = m.position;
+//             infoWindow.close();
+//             infoWindow.setContent(`${position.lat()}, ${position.lng()}`);
+//             infoWindow.open(m.map);
+//           });
+//         });
+//       } else {
+//         console.error("Unexpected response format:", data); // Handle unexpected response format
+//       }
+//       console.log(status);
+//     }
+//   );
+// }
 
 window.onload = onPageLoad;
