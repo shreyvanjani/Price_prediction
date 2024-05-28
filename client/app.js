@@ -29,21 +29,6 @@ function getFloorValue() {
 }
 
 
-function validateInput() {
-  const input = document.getElementById('numberInput').value;
-  const minValue = 1; // Minimum allowed value
-  const maxValue = 100; // Maximum allowed value
-
-  // Check if the input is a valid number and within the specified range
-  if (!/^\d+$/.test(input) || parseInt(input) < minValue || parseInt(input) > maxValue) {
-      // Display a pop-up alert with the error message
-      alert(`Please enter a valid number between ${minValue} and ${maxValue}.`);
-      return false; // Prevent form submission
-  }
-  return true; // Allow form submission if input is valid
-}
-
-
 
 function onClickedEstimatePrice() {
   console.log("Estimate price button clicked");
@@ -60,6 +45,16 @@ function onClickedEstimatePrice() {
     alert("Please enter valid numeric values for living area, lot area, and distance from airport.");
     return;
   }
+  
+  if (livingArea < 400 || lotArea <600 ){
+    alert("minimu value for living area is 400 and lot area is 600");
+    return;
+  }
+  if (livingArea < 400 || lotArea <600 || livingArea > lotArea){
+    alert("Living Area should be less than Lot Area");
+    return;
+  }
+
 
   // var url = "/api/predict_home_price";
   var url = "http://127.0.0.1:5000/predict_home_price"; 
