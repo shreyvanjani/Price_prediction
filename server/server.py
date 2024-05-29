@@ -58,12 +58,13 @@ def fetch_pincode_data():
         # Extract longitude and latitude values
         long = df['longitude'].values
         lat = df['latitude'].values
+        name= df['circlename'].values
         
         # Create a list of coordinate pairs
-        coordinates = list(zip(lat, long))
+        coordinates = list(zip(lat, long,name))
 
         # Convert the coordinates to a list of dictionaries for JSON serialization
-        coordinates_list = [{"latitude": lat, "longitude": lon} for lat, lon in coordinates]
+        coordinates_list = [{"latitude": lat, "longitude": lon, "name": name} for lat, lon, name in coordinates]
 
         return jsonify({"coordinates": coordinates_list})
 

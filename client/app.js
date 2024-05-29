@@ -105,6 +105,8 @@ let markers = [];
 let infoWindow;
 
 async function initMap() {
+  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
   var postal = document.getElementById("uiLocations").value;
   var url = "http://127.0.0.1:5000/fetch-pincode-data?pincode=" + postal;
   console.log(url);
@@ -117,21 +119,28 @@ async function initMap() {
 
       if (data.coordinates) {
           if (!map) {
-              map = new google.maps.Map(document.getElementById("map"), {
+              map = new Map(document.getElementById("map"), {
                   center: { lat: data.coordinates[0].latitude, lng: data.coordinates[0].longitude },
-                  zoom: 15,
+                  zoom: 13,
                   mapId: "4504f8b3736",
               });
-              infoWindow = new google.maps.InfoWindow();
+              infoWindow = new InfoWindow();
           } else {
               map.setCenter({ lat: data.coordinates[0].latitude, lng: data.coordinates[0].longitude });
           }
 
           markers = data.coordinates.map((coord, i) => {
-              const marker = new google.maps.Marker({
+              // const pin = new PinElement({
+              //   glyph: `${index + 1}`,
+              //   scale: 1.5,
+              // });
+              const marker = new AdvancedMarkerElement({
                   position: { lat: coord.latitude, lng: coord.longitude },
                   map: map,
-                  title: `${i + 1}. Location ${i + 1}`,
+                  title: coord.name,
+                  // content: coord.name,
+                  gmpClickable: true,
+                  gmpDraggable: true,
               });
 
               marker.addListener("click", () => {
@@ -139,6 +148,14 @@ async function initMap() {
                   infoWindow.setContent(marker.title);
                   infoWindow.open(map, marker);
               });
+
+              // marker.addListener("dragend", () => {
+              //   const newPosition = marker.position;
+          
+              //   infoWindow.close();
+              //   infoWindow.setContent(`Latitude: ${newPosition.lat()}, Longitude: ${newPosition.lng()}`);
+              //   infoWindow.open(map, marker);
+              // });
 
               return marker;
           });
