@@ -23,10 +23,6 @@ This is a web application that predicts the price of a property based on various
 4. The map of the area near the selected location's pincode will be automatically displayed on the page when you select it.
 5. Explore the map and use the available controls to zoom in, zoom out, or pan the map as needed.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
 - [Scikit-learn](https://scikit-learn.org/) for the machine learning library
