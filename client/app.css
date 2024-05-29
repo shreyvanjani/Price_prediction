@@ -13,6 +13,7 @@ body {
     flex: 1;
     flex-direction: row;
     border-radius: 30px;
+    height: 100vh;
 }
 
 #map {
@@ -32,6 +33,7 @@ body {
     position: relative; /* To ensure the pseudo-element is positioned correctly */
     z-index: 1; /* To ensure form content is above the pseudo-element */
     background: none; /* Remove background settings from the main .form element */
+    height: 100vh;
 }
 
 .form::before {
@@ -90,7 +92,7 @@ h2 {
 }
 
 /* Input Field Styles */
-.num {
+.num{
     width: 100%;
     padding: 10px;
     border: 1px solid #c4c4c4;
