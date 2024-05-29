@@ -1,39 +1,49 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #f0f2f5;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    color: #333;
+
 }
 
 .container {
     display: flex;
     flex: 1;
     flex-direction: row;
-    border-radius: 30px;
     height: 100vh;
+    padding: 20px;
+    gap: 20px;
 }
 
 #map {
+    background: url('https://r2.starryai.com/results/1009527443/2610fcb2-e739-4d95-8573-ed7dc56efe56.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    opacity: 0.9;
     flex: 2;
-    height: 100vh;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .form {
     flex: 1;
-    max-width: none; /* Allow the form to take full width of its flex container */
     margin: 0;
     padding: 20px;
-    border: 10px solid rgba(97, 97, 97, 0.24);
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.553);
-    overflow-y: auto; /* Allow scrolling if form content overflows */
-    position: relative; /* To ensure the pseudo-element is positioned correctly */
-    z-index: 1; /* To ensure form content is above the pseudo-element */
-    background: none; /* Remove background settings from the main .form element */
-    height: 100vh;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
 }
 
 .form::before {
@@ -43,27 +53,32 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://www.rcfacadelighting.com/wp-content/uploads/2022/07/villa-facade-lighting.jpg');
+    background: url('https://www.creativefabrica.com/wp-content/uploads/2023/05/11/Modern-colourful-abstract-background-Graphics-69439498-1-1-580x387.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    filter: blur(15px); /* Apply blur effect */
-    border-radius: 3px; /* Match the border radius of the form */
-    z-index: -1; /* Place the pseudo-element behind the form content */
-    background-blend-mode: lighten; /* Blend mode to darken the background image */
+    background-size: cover;
+    filter: blur(3px);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.97;
 }
-
 
 h2 {
-    margin-top: 15px;
-    margin-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #0d83f2;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: left;
+    font-size: 30 ;
+    font-weight: bold;
 }
 
-/* Switch Field Styles */
 .switch-field,
 .switch-field2,
 .floors {
+    font-family: 'Courier New', monospace;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -76,72 +91,83 @@ h2 {
 .switch-field label,
 .switch-field2 label,
 .floors label {
+    font-family: 'Courier New', monospace;
     display: inline-block;
     padding: 10px 20px;
-    background-color: #c4c4c4;
-    border-radius: 5px;
+    background-color: #e0e0e0;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    margin: 0 5px;
 }
 
 .switch-field input:checked + label,
 .switch-field2 input:checked + label,
 .floors input:checked + label {
-    background-color: #bac53b;
+    
+    background-color: #083569;
     color: #fff;
+    text-align: center;
 }
 
-/* Input Field Styles */
-.num{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #c4c4c4;
-    background-color: #c4c4c4;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-}
-
-/* Location Select Styles */
+.num,
 .location {
+    font-family: 'Courier New', monospace;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #b4afafaa;
-    background-color: #b4afafaa;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    border-radius: 30px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.num:focus,
+.location:focus {
+    border-color: #083569;
+    outline: none;
+}
+
+.location {
+    font-family: 'Courier New', monospace;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     background-repeat: no-repeat;
     background-position-x: 98%;
     background-position-y: center;
     padding-right: 30px;
-    color: #0b0505;
+    color: #083569;
 }
 
-/* Submit Button Styles */
 .submit {
+    font-family: 'Courier New', monospace;
     width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
+    padding: 12px;
+    background-color: #083569;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1em;
 }
 
 .submit:hover {
-    background-color: #3e8e41;
+    background-color: #083569;
 }
 
-/* Result Styles */
 .result {
+    font-family: 'Courier New', monospace;
     margin-top: 20px;
-    padding: 10px;
-    background-color: #c4c4c438;
-    border-radius: 5px;
-    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    text-align: right;
+    color: #083569;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Courier New', monospace;
+
 }

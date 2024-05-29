@@ -30,3 +30,4 @@ This is a web application that predicts the price of a property based on various
 - [Open Government Data API ](https://data.gov.in/) for postal codes information
 - [Flask](https://flask.palletsprojects.com/) for the Python web framework
 
+![alt text](image.png)
